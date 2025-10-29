@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <h1 id="welcome">Dashboard</h1>
+    <p id="userGreeting"></p>
+    <button class="my-button" onclick="handleLogout()">Logout</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('loggedIn') !== 'true') {
+                // not logged in — redirect to login
+                window.location.href = 'index.html';
+                return;
+            }
+            const username = sessionStorage.getItem('username') || 'usuário';
+            document.getElementById('userGreeting').textContent = 'Bem-vindo, ' + username + '!';
+        });
+    </script>
+</body>
+</html>
